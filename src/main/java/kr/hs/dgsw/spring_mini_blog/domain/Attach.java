@@ -31,4 +31,10 @@ public class Attach {
     @Column(nullable = false, updatable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime created;
+
+    public Attach(UUID id, String originalName, String relativePath) {
+        this.id = id;
+        this.originalName = originalName;
+        this.relativePath = relativePath;
+    }
 }

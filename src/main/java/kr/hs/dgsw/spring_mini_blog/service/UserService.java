@@ -11,5 +11,5 @@ public interface UserService {
     User update(Long id, User user);
     User remove(Long id);
 
-    User login(String account, String password);
+    User login(User user);
 }
