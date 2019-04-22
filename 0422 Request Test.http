@@ -4,3 +4,73 @@
 # * 'gtrp' and 'gtr' create a GET request with or without query parameters;
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "account": "hw0k",
+  "password": "#####",
+  "name": "현욱",
+  "email": "hw0knam@gmail.com",
+  "phone": "010-9172-7607"
+}
+
+###
+
+GET http://localhost:8080/user/1
+Accept: application/json
+
+###
+
+PUT http://localhost:8080/user/1
+Content-Type: application/json
+
+{
+  "account": "hw0knam",
+  "password": "#####",
+  "name": "남현욱",
+  "email": "hw0knam@gmail.com",
+  "phone": "010-9173-7607"
+}
+
+###
+
+GET http://localhost:8080/user/1
+Accept: application/json
+
+###
+
+##############################################################
+
+POST http://localhost:8080/post
+Content-Type: application/json
+
+{
+  "title": "아아아테스트",
+  "content": "아아아아",
+  "userid": 1
+}
+
+###
+
+GET http://localhost:8080/post/1
+Accept: application/json
+
+###
+
+PUT http://localhost:8080/post/1
+Content-Type: application/json
+
+{
+  "title": "AhAhAhTest",
+  "content": "AhAhAhAh",
+  "userid": 1
+}
+
+###
+
+GET http://localhost:8080/post/1
+Accept: application/json
+
+###
