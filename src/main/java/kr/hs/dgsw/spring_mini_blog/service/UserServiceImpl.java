@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
             return null;
         }
 
+        user.setId(id);
         return userRepository.save(user);
     }
 
@@ -50,7 +51,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(User user) {
         return userRepository
-                .findByAccountAndPassword(user.getAccount(), EncryptUtil.encryptString(user.getPassword()))
+                .findByAccountAndPassword(user.getAccount(), user.getPassword())
                 .orElse(null);
     }
 }

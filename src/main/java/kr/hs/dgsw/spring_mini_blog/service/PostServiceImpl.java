@@ -37,6 +37,7 @@ public class PostServiceImpl implements PostService {
             return null;
         }
 
+        post.setId(id);
         return postRepository.save(post);
     }
 
