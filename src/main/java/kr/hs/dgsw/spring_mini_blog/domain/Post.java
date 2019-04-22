@@ -12,40 +12,27 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import kr.hs.dgsw.spring_mini_blog.util.EncryptUtil;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 31)
-    private String account;
+    @Column(nullable = false)
+    private String title;
 
     @Column(nullable = false)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String password;
+    private String content;
 
-    public void setPassword(String password) {
-        this.password = EncryptUtil.encryptString(password);
-    }
-
-    @Column(nullable = false, length = 31)
-    private String name;
-
-    @Column(unique = true)
-    private String email;
-
-    @Column(unique = true)
-    private String phone;
+    @Column(nullable = false)
+    private Long userid;
 
     @Column
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private UUID profile;
+    private UUID picture;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
