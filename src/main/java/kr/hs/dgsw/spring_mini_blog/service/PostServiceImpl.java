@@ -61,7 +61,7 @@ public class PostServiceImpl implements PostService {
                 throw new Exception("Failed to update post");
             }
 
-            return new ResponseFormat(ResponseType.POST_ADD, updatedPost, updatedPost.getId());
+            return new ResponseFormat(ResponseType.POST_UPDATE, updatedPost, updatedPost.getId());
         }
         catch (Exception e) {
             return new ResponseFormat(ResponseType.FAIL, e.getMessage());
