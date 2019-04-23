@@ -27,6 +27,9 @@ public class Attach {
     @Column(nullable = false, updatable = false, unique = true)
     private String relativePath;
 
+    @Column
+    private Long postId;
+
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

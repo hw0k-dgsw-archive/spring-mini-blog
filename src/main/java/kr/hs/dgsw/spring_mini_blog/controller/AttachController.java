@@ -2,6 +2,7 @@ package kr.hs.dgsw.spring_mini_blog.controller;
 
 import kr.hs.dgsw.spring_mini_blog.domain.Attach;
 import kr.hs.dgsw.spring_mini_blog.domain.Post;
+import kr.hs.dgsw.spring_mini_blog.protocol.ResponseFormat;
 import kr.hs.dgsw.spring_mini_blog.service.AttachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -27,7 +28,7 @@ public class AttachController {
     }
 
     @PostMapping("/attach")
-    public Attach create(@RequestPart MultipartFile file) {
+    public ResponseFormat create(@RequestPart MultipartFile file) {
         return attachService.create(file);
     }
 }

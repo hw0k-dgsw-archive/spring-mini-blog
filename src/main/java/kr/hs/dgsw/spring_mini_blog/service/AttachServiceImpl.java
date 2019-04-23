@@ -1,6 +1,8 @@
 package kr.hs.dgsw.spring_mini_blog.service;
 
 import kr.hs.dgsw.spring_mini_blog.domain.Attach;
+import kr.hs.dgsw.spring_mini_blog.protocol.ResponseFormat;
+import kr.hs.dgsw.spring_mini_blog.protocol.ResponseType;
 import kr.hs.dgsw.spring_mini_blog.repository.AttachRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -55,7 +56,7 @@ public class AttachServiceImpl implements AttachService {
     }
 
     @Override
-    public Attach create(MultipartFile file) {
+    public ResponseFormat create(MultipartFile file) {
         UUID uuid = UUID.randomUUID();
         String path = "\\upload\\" + uuid.toString();
 
@@ -63,18 +64,19 @@ public class AttachServiceImpl implements AttachService {
             File dest = new File(System.getProperty("user.dir") + path);
             dest.getParentFile().mkdirs();
             file.transferTo(dest);
+
+            Attach attach = attachRepository.save(new Attach(uuid, file.getOriginalFilename(), path));
+            return new ResponseFormat(ResponseType.ATTACH_STORED, attach, file.getOriginalFilename());
         }
-        catch (IOException e) {
+        catch (Exception e) {
             Logger logger = LoggerFactory.getLogger(AttachServiceImpl.class);
             logger.warn(e.getMessage());
             return null;
         }
-
-        return attachRepository.save(new Attach(uuid, file.getOriginalFilename(), path));
     }
 
     @Override
-    public Attach remove(UUID id) {
-        return null;
+    public ResponseFormat remove(UUID id) {
+        return new ResponseFormat(ResponseType.FAIL, "Currently isn't available.");
     }
 }
