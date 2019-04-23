@@ -13,7 +13,7 @@ public enum ResponseType {
     POST_UPDATE (202, "Post [%s] successfully updated"),
     POST_DELETE (203, "Post [%s] successfully deleted"),
 
-    ATTACH_STORED (204, "Attach [%s] successfully stored")
+    ATTACH_STORED (300, "Attach [%s] successfully stored")
 
     ;
 
